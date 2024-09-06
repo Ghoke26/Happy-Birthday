@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <style>
+        body{
+
+            font-family: "Bowlby One", sans-serif;
+            background-color: #A02334;
+            color: #FFEEAD;
+        }
+
+        span{
+            display: block;
+            background-color: #FFEEAD;
+            color: #A02334;
+            border-radius: 10px;
+            margin-top: 20px ;
+            padding: 5px;
+            box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+        }
+        
+        .container{
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            /* border: 3px solid #96CEB4; */
+            padding: 10px;
+            border-radius: 20px;
+
+        }
+        
+        .content{
+            background-color: #FFEEAD;
+            width: 75%;
+            margin: auto;
+            margin-top: 50px;
+            padding: 20px;
+            border-radius: 20px;
+
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+
+        .content p{
+            text-align: center;
+            font-size: 1.2rem; 
+            font-weight: 700;
+            color: #A02334;
+        }
+
+        .content span{
+            background-color: #FFEEAD;
+            text-align: center;
+        }
+
+        #copyright{
+            text-align: end;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Selamat Ulang Tahun Pak
+            <span>Ke-46</span>
+        </h1>
+
+    </div>
+    
+    <div class="content">
+        <p id="animated-text">
+    
+        </p>
+        <span>06 September 2024</span>
+    </div>
+
+    <p id="copyright" >&copy; by Eleazar</p>
+
+
+
+
+    <script>
+
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function typeWriter(text, elementId, speed) {
+            return new Promise((resolve) => {
+                let i = 0;
+                const element = document.getElementById(elementId);
+                function type() {
+                    if (i < text.length) {
+                        element.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(type, speed);
+                    } else {
+                        resolve(); 
+                    }
+                }
+                type();
+            });
+        }
+
+        async function displayTexts() {
+            const texts = [
+                "Selamat Ulang Tahun buat Bapak yang ke-46 !",
+                "Terima kasih atas apa yang bapak berikan buat saya",
+                "Mohon maaf Pak untuk sekarang saya belum bisa memberikan sesuatu",
+                "Tetapi nanti entah kapan saya akan memberikan yang terbaik",
+                "Sekali lagi saya mengucapkan Selamat Ulang Tahun",
+                "Kesehatan, kekuatan dan juga dalam pelayanan",
+                "Saya mendoakannya selalu",
+            ];
+
+            await delay(4000);
+            const element = document.getElementById("animated-text");
+            for (const text of texts) {
+                await typeWriter(text, "animated-text", 75); 
+                element.innerHTML += '<br><br>'; 
+            }
+        }
+
+        displayTexts();
+    </script>
+</body>
+</html>
